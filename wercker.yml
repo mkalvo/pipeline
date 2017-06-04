@@ -9,17 +9,21 @@ build:
     - script:
         name: go get
         code: |
-          go get
+          cd $WERCKER_SOURCE_DIR
+          go get -u github.com/Masterminds/glide
+          export PATH=$WERCKER_SOURCE_DIR/bin:$PATH
+          glide install
 
     - script:
         name: go build
         code: |
-          go build ./...
+          go build ./
+
 
     - script:
-        name: go test
+        name: copy files to wercker output
         code: |
-          go test ./...
+          cp -R ./ ${WERCKER_OUTPUT_DIR}
 
 deploy:
   steps:
