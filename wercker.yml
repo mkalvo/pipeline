@@ -20,3 +20,14 @@ build:
         name: go test
         code: |
           go test ./...
+
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $USERNAME
+        password: $PASSWORD
+        cmd: /pipeline/source/gogo-service
+        port: "8080"
+        tag: latest
+        repository: mkalvo/gogo-service
+        registry: https://registry.hub.docker.com
