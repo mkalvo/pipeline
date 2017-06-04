@@ -30,7 +30,7 @@ deploy:
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD
-        cmd: /pipeline/source/main
+        cmd: /pipeline/source/pipeline
         tag: latest
         repository: mkalvo/pipeline
         registry: https://registry.hub.docker.com
